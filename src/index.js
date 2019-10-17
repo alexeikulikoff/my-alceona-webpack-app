@@ -9,32 +9,22 @@
 
 //ReactDOM.render(<div>{title}</div>, document.getElementById('root'));
 
-import _ from 'lodash';
+//import _ from 'lodash';
 import printMe from './print.js';
+import React from 'react';
+import ReactDOM from 'react-dom'
+import { App } from './app'
 
 require('./index.html');
 
 
-function component() {
-   const element = document.createElement('div');
-   const btn = document.createElement('button');
+ ReactDOM.render(<App />, document.getElementById('root'))
 
-   element.innerHTML = _.join(['Hello', 'webpack', '666'], ' ');
-
-   btn.innerHTML = 'Click me and check the console!';
-   btn.onclick = printMe;
-
-   element.appendChild(btn);
-
-   return element;
- }
-
- document.body.appendChild(component());
 
 if (module.hot) {
-   module.hot.accept('./print.js', function() {
+  module.hot.accept('./print.js', function() {
      console.log('Accepting the updated printMe module!');
      printMe();
    })
  }
-//module.hot.accept();
+
